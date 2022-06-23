@@ -1,4 +1,4 @@
-<canvas id="grafico" width="560" height="480" style="border: 1px solid #000000" tabindex="0"> </canvas>
+<canvas id="grafico" width="560" height="480" style="border: 2px solid #000000" tabindex="0"> </canvas>
 
 <script>
   const canvasWidth = 560;
@@ -17,7 +17,7 @@
   let intervalArriba;
   let intervalAbajo;
   const cantidad = 4;
-  const velocidad = 250;
+  const velocidad = 125;
   let direccionDerecha = true;
   let direccionIzquierda = false;
   let direccionArriba = false;
@@ -162,7 +162,58 @@
     }
   }
 
-  async function pintarSerpiente(direccion) {
+  async function mantenerMovimientoDespuesDeAtraparComida(direccion){
+    limpiarIntervalos();
+    //Este Promise con  SetTimeout es para esperar unos segundos,
+    //si no se presiona una tecla al atrapar la comida se activa
+    //el movimiento en la misma direccion que viene.
+    const respuestaTrue = await new Promise((resolve) => setTimeout(() => resolve(true), velocidad));
+    //console.log(agregarCuadroPorMovimiento);
+    switch (direccion) {
+      case "ArrowRight":
+        if (agregarCuadroPorMovimiento) {
+          //console.log("DERECHA EN PINTAR SERPIENTE");
+          direccionDerecha = true;
+          agregarCuadroAtrapado(direccion,velocidad);
+          //intervalDerecha = setInterval(moverSerpienteDerecha, velocidad);
+          //moverSerpienteDerecha();
+          //limpiarMovimientoDerecha();
+        }
+        break;
+
+      case "ArrowLeft":
+        if (agregarCuadroPorMovimiento) {
+          //console.log("IZQUIERDA EN PINTAR SERPIENTE");
+          direccionIzquierda = true;
+          agregarCuadroAtrapado(direccion,velocidad);
+          //moverSerpienteIzquierda();
+          //limpiarMovimientoIzquierda();
+        }
+        break;
+
+      case "ArrowUp":
+        if (agregarCuadroPorMovimiento) {
+          //console.log("ARRIBA EN PINTAR SERPIENTE");
+          direccionArriba = true;
+          agregarCuadroAtrapado(direccion,velocidad);
+          //moverSerpienteArriba();
+          //limpiarMovimientoArriba();
+        }
+        break;
+
+      case "ArrowDown":
+        if (agregarCuadroPorMovimiento) {
+          //console.log("ABAJO EN PINTAR SERPIENTE");
+          direccionAbajo = true;
+          agregarCuadroAtrapado(direccion,velocidad);
+          //moverSerpienteAbajo();
+          //limpiarMovimientoAbajo();
+        }
+        break;
+    }
+  }
+
+  function pintarSerpiente(direccion) {
     //console.log(serpiente.length);
     limpiarPantalla();
 
@@ -177,55 +228,8 @@
     const cantidadActual = serpiente.length;
     //Verificar si la serpiente esta en la comida
     if (serpiente[cantidadActual - 1].x === cuadroAleatorio.x && serpiente[cantidadActual - 1].y === cuadroAleatorio.y) {
-      limpiarIntervalos();
       //console.log("ATRAPADO");
-      //Este Promise con  SetTimeout es para esperar unos segundos,
-      //si no se presiona una tecla al atrapar la comida se activa
-      //el movimiento en la misma direccion que viene.
-      const respuestaTrue = await new Promise((resolve) => setTimeout(() => resolve(true), velocidad));
-      //console.log(agregarCuadroPorMovimiento);
-      switch (direccion) {
-        case "ArrowRight":
-          if (agregarCuadroPorMovimiento) {
-            //console.log("DERECHA EN PINTAR SERPIENTE");
-            direccionDerecha = true;
-            agregarCuadroAtrapado(direccion,velocidad);
-            //intervalDerecha = setInterval(moverSerpienteDerecha, velocidad);
-            //moverSerpienteDerecha();
-            //limpiarMovimientoDerecha();
-          }
-          break;
-
-        case "ArrowLeft":
-          if (agregarCuadroPorMovimiento) {
-            //console.log("IZQUIERDA EN PINTAR SERPIENTE");
-            direccionIzquierda = true;
-            agregarCuadroAtrapado(direccion,velocidad);
-            //moverSerpienteIzquierda();
-            //limpiarMovimientoIzquierda();
-          }
-          break;
-
-        case "ArrowUp":
-          if (agregarCuadroPorMovimiento) {
-            //console.log("ARRIBA EN PINTAR SERPIENTE");
-            direccionArriba = true;
-            agregarCuadroAtrapado(direccion,velocidad);
-            //moverSerpienteArriba();
-            //limpiarMovimientoArriba();
-          }
-          break;
-
-        case "ArrowDown":
-          if (agregarCuadroPorMovimiento) {
-            //console.log("ABAJO EN PINTAR SERPIENTE");
-            direccionAbajo = true;
-            agregarCuadroAtrapado(direccion,velocidad);
-            //moverSerpienteAbajo();
-            //limpiarMovimientoAbajo();
-          }
-          break;
-      }
+      mantenerMovimientoDespuesDeAtraparComida(direccion);
     }
   }
 
@@ -338,7 +342,7 @@
     //console.log(e.key)
     if (serpiente[cantidadActual - 1].x === cuadroAleatorio.x && serpiente[cantidadActual - 1].y === cuadroAleatorio.y) {
       //Para desactivar el switch que se ejecuta despues del setTimeout
-      //en la funcion pintarSerpiente porque ya no hace falta, 
+      //en la funcion pintarSerpiente porque ya no hace falta,
       //el movimiento se va a activar con la pulsacion del teclado.
       agregarCuadroPorMovimiento = false;
       agregarCuadroAtrapado(e.key,velocidad * 0.25);
