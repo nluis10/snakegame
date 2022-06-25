@@ -22,7 +22,8 @@ let direccionDerecha = false;
 let direccionIzquierda = false;
 let direccionArriba = false;
 let direccionAbajo = false;
-let agregarCuadroPorMovimiento = true;
+let agregarPorMovimiento = true;
+let agregarPortecla = true;
 let puntaje = 0;
 
 const xAleatorioInicial = calcularNumeroBase(cuadroWidth, cuadroAleatorioWidth, cuadroWidth);
@@ -92,6 +93,24 @@ function pintarCuadroAleatorio() {
 
   pincel.fillRect(cuadroAleatorio.x, cuadroAleatorio.y, cuadroWidth, cuadroHeight);
   pincel.strokeRect(cuadroAleatorio.x, cuadroAleatorio.y, cuadroWidth, cuadroHeight);
+}
+
+function agregarCuadroAtrapadoPorMovimiento(direccion, velocidad){
+    if(agregarPorMovimiento){
+        agregarPortecla = false;
+        console.log("POR MOVIMIENTO");
+        agregarCuadroAtrapado(direccion, velocidad);
+    }
+    
+}
+
+function agregarCuadroAtrapadoPorTecla(direccion, velocidad){
+    if(agregarPortecla){
+        agregarPorMovimiento = false;
+        console.log("POR TECLA");
+        agregarCuadroAtrapado(direccion, velocidad);
+    }
+    
 }
 
 async function agregarCuadroAtrapado(tecla, segundos) {
@@ -170,41 +189,45 @@ async function mantenerMovimientoDespuesDeAtraparComida(direccion) {
   //si no se presiona una tecla al atrapar la comida se activa
   //el movimiento en la misma direccion que viene.
   const respuestaTrue = await new Promise((resolve) => setTimeout(() => resolve(true), velocidad));
-  //console.log(agregarCuadroPorMovimiento);
+  //console.log(agregarPorMovimiento);
   switch (direccion) {
     case "ArrowRight":
-      if (agregarCuadroPorMovimiento) {
-        agregarCuadroPorMovimiento = false;
+      if (agregarPorMovimiento) {
+        //agregarPorMovimiento = false;
         //console.log("DERECHA EN PINTAR SERPIENTE");
         direccionDerecha = true;
-        agregarCuadroAtrapado(direccion, velocidad);
+        agregarCuadroAtrapadoPorMovimiento(direccion, velocidad);
+        //agregarCuadroAtrapado(direccion, velocidad);
       }
       break;
 
     case "ArrowLeft":
-      if (agregarCuadroPorMovimiento) {
-        agregarCuadroPorMovimiento = false;
+      if (agregarPorMovimiento) {
+        //agregarPorMovimiento = false;
         //console.log("IZQUIERDA EN PINTAR SERPIENTE");
         direccionIzquierda = true;
-        agregarCuadroAtrapado(direccion, velocidad);
+        agregarCuadroAtrapadoPorMovimiento(direccion, velocidad);
+        //agregarCuadroAtrapado(direccion, velocidad);
       }
       break;
 
     case "ArrowUp":
-      if (agregarCuadroPorMovimiento) {
-        agregarCuadroPorMovimiento = false;
+      if (agregarPorMovimiento) {
+        //agregarPorMovimiento = false;
         //console.log("ARRIBA EN PINTAR SERPIENTE");
         direccionArriba = true;
-        agregarCuadroAtrapado(direccion, velocidad);
+        agregarCuadroAtrapadoPorMovimiento(direccion, velocidad);
+        //agregarCuadroAtrapado(direccion, velocidad);
       }
       break;
 
     case "ArrowDown":
-      if (agregarCuadroPorMovimiento) {
-        agregarCuadroPorMovimiento = false;
+      if (agregarPorMovimiento) {
+        //agregarPorMovimiento = false;
         //console.log("ABAJO EN PINTAR SERPIENTE");
         direccionAbajo = true;
-        agregarCuadroAtrapado(direccion, velocidad);
+        agregarCuadroAtrapadoPorMovimiento(direccion, velocidad);
+        //agregarCuadroAtrapado(direccion, velocidad);
       }
       break;
   }
@@ -368,8 +391,9 @@ async function moverSerpiente(e) {
     //Para desactivar el switch que se ejecuta despues del setTimeout
     //en la funcion pintarSerpiente porque ya no hace falta,
     //el movimiento se va a activar con la pulsacion del teclado.
-    agregarCuadroPorMovimiento = false;
-    agregarCuadroAtrapado(e.key, velocidad * 0.25);
+    //agregarPorMovimiento = false;
+    agregarCuadroAtrapadoPorTecla(e.key, velocidad * 0.25);
+    //agregarCuadroAtrapado(e.key, velocidad * 0.25);
   } else {
     switch (e.key) {
       case "ArrowRight":
@@ -379,7 +403,8 @@ async function moverSerpiente(e) {
           intervalDerecha = setInterval(moverSerpienteDerecha, velocidad);
           const respuestaTrue = await new Promise((resolve) => setTimeout(() => resolve(true), velocidad));
           limpiarMovimientoDerecha();
-          agregarCuadroPorMovimiento = true;
+          agregarPorMovimiento = true;
+          agregarPortecla = true;
         }
         break;
 
@@ -390,7 +415,8 @@ async function moverSerpiente(e) {
           intervalIzquierda = setInterval(moverSerpienteIzquierda, velocidad);
           const respuestaTrue = await new Promise((resolve) => setTimeout(() => resolve(true), velocidad));
           limpiarMovimientoIzquierda();
-          agregarCuadroPorMovimiento = true;
+          agregarPorMovimiento = true;
+          agregarPortecla = true;
         }
         break;
 
@@ -401,7 +427,8 @@ async function moverSerpiente(e) {
           intervalArriba = setInterval(moverSerpienteArriba, velocidad);
           const respuestaTrue = await new Promise((resolve) => setTimeout(() => resolve(true), velocidad));
           limpiarMovimientoArriba();
-          agregarCuadroPorMovimiento = true;
+          agregarPorMovimiento = true;
+          agregarPortecla = true;
         }
         break;
 
@@ -412,7 +439,8 @@ async function moverSerpiente(e) {
           intervalAbajo = setInterval(moverSerpienteAbajo, velocidad);
           const respuestaTrue = await new Promise((resolve) => setTimeout(() => resolve(true), velocidad));
           limpiarMovimientoAbajo();
-          agregarCuadroPorMovimiento = true;
+          agregarPorMovimiento = true;
+          agregarPortecla = true;
         }
         break;
     }
