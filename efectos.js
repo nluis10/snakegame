@@ -95,22 +95,20 @@ function pintarCuadroAleatorio() {
   pincel.strokeRect(cuadroAleatorio.x, cuadroAleatorio.y, cuadroWidth, cuadroHeight);
 }
 
-function agregarCuadroAtrapadoPorMovimiento(direccion, velocidad){
-    if(agregarPorMovimiento){
-        agregarPortecla = false;
-        console.log("POR MOVIMIENTO");
-        agregarCuadroAtrapado(direccion, velocidad);
-    }
-    
+function agregarCuadroAtrapadoPorMovimiento(direccion, velocidad) {
+  if (agregarPorMovimiento) {
+    agregarPortecla = false;
+    console.log("POR MOVIMIENTO");
+    agregarCuadroAtrapado(direccion, velocidad);
+  }
 }
 
-function agregarCuadroAtrapadoPorTecla(direccion, velocidad){
-    if(agregarPortecla){
-        agregarPorMovimiento = false;
-        console.log("POR TECLA");
-        agregarCuadroAtrapado(direccion, velocidad);
-    }
-    
+function agregarCuadroAtrapadoPorTecla(direccion, velocidad) {
+  if (agregarPortecla) {
+    agregarPorMovimiento = false;
+    console.log("POR TECLA");
+    agregarCuadroAtrapado(direccion, velocidad);
+  }
 }
 
 async function agregarCuadroAtrapado(tecla, segundos) {
@@ -192,43 +190,27 @@ async function mantenerMovimientoDespuesDeAtraparComida(direccion) {
   //console.log(agregarPorMovimiento);
   switch (direccion) {
     case "ArrowRight":
-      if (agregarPorMovimiento) {
-        //agregarPorMovimiento = false;
-        //console.log("DERECHA EN PINTAR SERPIENTE");
-        direccionDerecha = true;
-        agregarCuadroAtrapadoPorMovimiento(direccion, velocidad);
-        //agregarCuadroAtrapado(direccion, velocidad);
-      }
+      //console.log("DERECHA EN PINTAR SERPIENTE");
+      direccionDerecha = true;
+      agregarCuadroAtrapadoPorMovimiento(direccion, velocidad);
       break;
 
     case "ArrowLeft":
-      if (agregarPorMovimiento) {
-        //agregarPorMovimiento = false;
-        //console.log("IZQUIERDA EN PINTAR SERPIENTE");
-        direccionIzquierda = true;
-        agregarCuadroAtrapadoPorMovimiento(direccion, velocidad);
-        //agregarCuadroAtrapado(direccion, velocidad);
-      }
+      //console.log("IZQUIERDA EN PINTAR SERPIENTE");
+      direccionIzquierda = true;
+      agregarCuadroAtrapadoPorMovimiento(direccion, velocidad);
       break;
 
     case "ArrowUp":
-      if (agregarPorMovimiento) {
-        //agregarPorMovimiento = false;
-        //console.log("ARRIBA EN PINTAR SERPIENTE");
-        direccionArriba = true;
-        agregarCuadroAtrapadoPorMovimiento(direccion, velocidad);
-        //agregarCuadroAtrapado(direccion, velocidad);
-      }
+      //console.log("ARRIBA EN PINTAR SERPIENTE");
+      direccionArriba = true;
+      agregarCuadroAtrapadoPorMovimiento(direccion, velocidad);
       break;
 
     case "ArrowDown":
-      if (agregarPorMovimiento) {
-        //agregarPorMovimiento = false;
-        //console.log("ABAJO EN PINTAR SERPIENTE");
-        direccionAbajo = true;
-        agregarCuadroAtrapadoPorMovimiento(direccion, velocidad);
-        //agregarCuadroAtrapado(direccion, velocidad);
-      }
+      //console.log("ABAJO EN PINTAR SERPIENTE");
+      direccionAbajo = true;
+      agregarCuadroAtrapadoPorMovimiento(direccion, velocidad);
       break;
   }
 }
