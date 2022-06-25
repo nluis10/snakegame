@@ -98,7 +98,7 @@ function pintarCuadroAleatorio() {
 function agregarCuadroAtrapadoPorMovimiento(direccion, velocidad) {
   if (agregarPorMovimiento) {
     agregarPortecla = false;
-    console.log("POR MOVIMIENTO");
+    //console.log("POR MOVIMIENTO");
     agregarCuadroAtrapado(direccion, velocidad);
   }
 }
@@ -106,7 +106,7 @@ function agregarCuadroAtrapadoPorMovimiento(direccion, velocidad) {
 function agregarCuadroAtrapadoPorTecla(direccion, velocidad) {
   if (agregarPortecla) {
     agregarPorMovimiento = false;
-    console.log("POR TECLA");
+    //console.log("POR TECLA");
     agregarCuadroAtrapado(direccion, velocidad);
   }
 }
