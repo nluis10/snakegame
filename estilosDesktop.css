@@ -1,21 +1,17 @@
-body {
-  background-color: lightgray;
-}
-/*.center {
+.center {
   width: 100%;
   height: 96vh;
-  outline: dashed 1px black;*
+  /*outline: dashed 1px black;*/
   display: flex;
   justify-content: center;
   align-items: center;
-}*/
+}
 .divJuegoMobile {
   display: block;
 }
 .divJuegoMobile > table {
   border: 2px solid #000;
-  width: 100%;
-  /*font-size: 36px;*/
+  width: 564px;
 }
 .divJuegoMobile table > tbody > tr > td {
   text-align: left;
@@ -24,7 +20,7 @@ body {
   background-color: black;
   font-weight: bold;
   color: white;
-  /*font-size: 40px;*/
+  font-size: 18px;
 }
 
 .jugarMobile {
@@ -51,19 +47,15 @@ body {
   font-weight: bold;
   float: left;
 }
-.divJuegoMobile > canvas {
-  border: 2px solid #000;
-  width: 100%;
-}
 
 @media only screen and (orientation: portrait) {
   body {
-    background-color: #bdf3b7;
+    background-color: lightgray;
   }
 }
 
 @media only screen and (orientation: landscape) {
   body {
-    background-color: lightblue;
+    background-color: lightgreen;
   }
 }

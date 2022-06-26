@@ -5,7 +5,7 @@
   </head>
   <body>
     <div class="center">
-      <div class="ajustar">
+      <div class="divJuegoMobile">
         <table>
           <thead>
             <tr>
@@ -18,19 +18,20 @@
                 <label for="cars"><b>NIVEL:</b></label>
               </td>
               <td>
-                <select name="cars" id="nivel">
+                <select name="nivel" id="nivel">
                   <option value="FACIL">FACIL</option>
                   <option value="NORMAL" selected="selected">NORMAL</option>
                   <option value="DIFICIL">DIFICIL</option>
                 </select>
               </td>
               <td><b>PUNTAJE:</b></td>
-              <td><button type="button" id="puntaje" class="puntaje">0</button></td>
-              <td><button type="button" id="jugar">JUGAR</button></td>
+              <td><button type="button" id="puntaje" class="puntajeMobile">0</button></td>
+              
             </tr>
           </tbody>
         </table>
-        <canvas id="grafico" class="juego" width="560" height="420" style="border: 2px solid #000000" tabindex="0"> </canvas>
+        <canvas id="graficoMobile" width="560" height="420" tabindex="0"> </canvas>
+        <td><button type="button" id="jugar" class="jugarMobile">JUGAR</button></td>
       </div>
     </div>
   </body>

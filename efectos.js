@@ -1,6 +1,6 @@
 const canvasWidth = 560;
 const canvasHeight = 420;
-const pantalla = document.getElementById("grafico");
+const pantalla = document.getElementById("graficoMobile");
 const botonJugar = document.getElementById("jugar");
 const botonPuntaje = document.getElementById("puntaje");
 const selectNivel = document.getElementById("nivel");
