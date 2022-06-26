@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="estilos.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="estilos.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="center">
-      <div class="divJuegoMobile">
+      <div class="divJuego">
         <table>
           <thead>
             <tr>
@@ -26,12 +28,20 @@
               </td>
               <td><b>PUNTAJE:</b></td>
               <td><button type="button" id="puntaje" class="puntajeMobile">0</button></td>
-              
             </tr>
           </tbody>
         </table>
         <canvas id="graficoMobile" width="560" height="420" tabindex="0"> </canvas>
-        <td><button type="button" id="jugar" class="jugarMobile">JUGAR</button></td>
+      </div>
+      <div class="divFlechas">
+        <div>
+          <button type="button" id="botonFlechaArriba" class="jugarFlechaArriba">&#8593;</button>
+        </div>
+        <div class="divFlechasAbajo">
+          <button type="button" id="botonFlechaIzquierda" class="jugarFlechaIzquierda">&#8592;</button>
+          <button type="button" id="botonFlechaAbajo" class="jugarFlechaAbajo">&#8595;</button>
+          <button type="button" id="botonFlechaDerecha" class="jugarFlechaDerecha">&#8594;</button>
+        </div>
       </div>
     </div>
   </body>

@@ -1,9 +1,12 @@
 const canvasWidth = 560;
 const canvasHeight = 420;
 const pantalla = document.getElementById("graficoMobile");
-const botonJugar = document.getElementById("jugar");
 const botonPuntaje = document.getElementById("puntaje");
 const selectNivel = document.getElementById("nivel");
+const botonFlechaDerecha = document.getElementById("botonFlechaDerecha");
+const botonFlechaIzquierda = document.getElementById("botonFlechaIzquierda");
+const botonFlechaArriba = document.getElementById("botonFlechaArriba");
+const botonFlechaAbajo = document.getElementById("botonFlechaAbajo");
 const pincel = pantalla.getContext("2d");
 
 let xInicial = 0;
@@ -25,6 +28,7 @@ let direccionAbajo = false;
 let agregarPorMovimiento = true;
 let agregarPortecla = true;
 let puntaje = 0;
+let clickBotonJugar = true;
 
 const xAleatorioInicial = calcularNumeroBase(cuadroWidth, cuadroAleatorioWidth, cuadroWidth);
 const yAleatorioInicial = calcularNumeroBase(cuadroHeight, cuadroAleatorioHeight, cuadroHeight);
@@ -362,7 +366,7 @@ function reiniciar() {
   direccionArriba = false;
   direccionAbajo = false;
   selectNivel.disabled = false;
-  botonJugar.disabled = false;
+  clickBotonJugar = true;
   mensajeJuegoFinalizado();
 }
 
@@ -462,7 +466,7 @@ function jugar() {
   puntaje = 0;
   botonPuntaje.innerHTML = puntaje;
   selectNivel.disabled = true;
-  botonJugar.disabled = true;
+  clickBotonJugar = false;
   //console.log("JUGAR");
   switch (selectNivel.value) {
     case "FACIL":
@@ -487,9 +491,18 @@ function jugar() {
 function mensajeInicarJuego() {
   pincel.font = "bold 21px Arial";
   pincel.fillStyle = "black";
-  pincel.fillText("Presiona el boton azul JUGAR para empezar el juego", 10, 200);
+  pincel.fillText("Presiona el boton azul JUGAR para empezar el juego", 14, 200);
   pincel.font = "bold 18px Arial";
-  pincel.fillText("Mueve la serpiente usando las flechas de dirección", 50, 250);
+  pincel.fillText("Mueve la serpiente usando las flechas de direcci\u00f3n", 54, 250);
+
+  pincel.fillStyle = "#008cba";
+  pincel.strokeStyle = "black";
+  pincel.fillRect(194, 292, 170, 86);
+  pincel.strokeRect(194, 292, 170, 86);
+
+  pincel.font = "bold 40px Arial";
+  pincel.fillStyle = "white";
+  pincel.fillText("JUGAR", 208, 346);
 }
 
 function mensajeJuegoFinalizado() {
@@ -498,28 +511,68 @@ function mensajeJuegoFinalizado() {
   //Asignar el valor de x para el mensaje del NIVEL
   switch (selectNivel.value) {
     case "FACIL":
-      xMensajeNivel = 200;
+      xMensajeNivel = 160;
       break;
 
     case "NORMAL":
-      xMensajeNivel = 180;
+      xMensajeNivel = 140;
       break;
 
     case "DIFICIL":
-      xMensajeNivel = 190;
+      xMensajeNivel = 150;
       break;
   }
-  pincel.font = "bold 26px Arial";
+  pincel.font = "bold 40px Arial";
   pincel.fillStyle = "black";
-  pincel.fillText("JUEGO TERMINADO", 160, 150);
-  pincel.fillText("TU PUNTAJE: " + puntaje, 180, 200);
-  pincel.fillText("NIVEL: " + selectNivel.value, xMensajeNivel, 250);
+  pincel.fillText("JUEGO TERMINADO", 100, 120);
+  pincel.fillText("TU PUNTAJE: " + puntaje, 140, 170);
+  pincel.fillText("NIVEL: " + selectNivel.value, xMensajeNivel, 220);
   pincel.font = "bold 20px Arial";
-  pincel.fillText("Presiona el boton azul JUGAR para volver a jugar", 40, 300);
+  pincel.fillText("Presiona el boton azul JUGAR para empezar el juego", 40, 270);
+
+  pincel.fillStyle = "#008cba";
+  pincel.strokeStyle = "black";
+  pincel.fillRect(194, 292, 170, 86);
+  pincel.strokeRect(194, 292, 170, 86);
+
+  pincel.font = "bold 40px Arial";
+  pincel.fillStyle = "white";
+  pincel.fillText("JUGAR", 208, 346);
+}
+
+function moverBotonFlechaDerecha(){
+  moverSerpiente({ key: "ArrowRight" });
+}
+
+function moverBotonFlechaIzquierda(){
+  moverSerpiente({ key: "ArrowLeft" });
+}
+
+function moverBotonFlechaArriba(){
+  moverSerpiente({ key: "ArrowUp" });
+}
+
+function moverBotonFlechaAbajo(){
+  moverSerpiente({ key: "ArrowDown" });
+}
+
+function verficarCoordenadas(e){
+  let x = e.pageX - pantalla.offsetLeft;
+  let y = e.pageY - pantalla.offsetTop;  
+  //console.log(x,y)
+  if(x >= 120 && x <= 520 && y >= 180 && y <= 540 && clickBotonJugar == true){
+    //console.log("JUGAR");
+    clickBotonJugar = false;
+    jugar();
+  }
 }
 
 culebraInicial();
 pintarSerpiente("ArrowRight");
 mensajeInicarJuego();
 pantalla.onkeydown = moverSerpiente;
-botonJugar.onclick = jugar;
+pantalla.onclick = verficarCoordenadas;
+botonFlechaDerecha.ontouchstart = moverBotonFlechaDerecha;
+botonFlechaIzquierda.ontouchstart = moverBotonFlechaIzquierda;
+botonFlechaArriba.ontouchstart = moverBotonFlechaArriba;
+botonFlechaAbajo.ontouchstart = moverBotonFlechaAbajo;
