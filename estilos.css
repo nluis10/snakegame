@@ -45,3 +45,17 @@ button {
 p {
   text-align: center;
 }
+
+@media only screen and (min-width: 600px) {
+/*For Tablets*/
+  body {
+    background-color: lightblue;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  body {
+    background-color: lightgreen;
+  }
+}
