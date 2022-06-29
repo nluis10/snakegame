@@ -1,6 +1,3 @@
-body {
-  background-color: gray;
-}
 .divJuego {
   display: block;
 }
@@ -29,11 +26,11 @@ body {
   background-color: #4caf50;
   border: none;
   color: white;
-  padding: 10px 24px;
+  padding: 6px 18px;
   text-align: center;
   text-decoration: none;
   float: left;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
   float: left;
 }
@@ -77,17 +74,8 @@ body {
   width: 99%;
 }
 
-@media only screen and (orientation: portrait) and (min-width: 300px){
-  /*Telefono con width minimo de 300 pixeles*/
-  body {
-    background-color: white;
-  }
-}
 @media only screen and (orientation: portrait) and (min-width: 400px){
   /*Telefono con width minimo de 400 pixeles*/
-  body {
-    background-color: white;
-  }
   .divFlechas > div > .jugarFlechaIzquierda {
     margin-left: 20%;
   }
@@ -97,9 +85,6 @@ body {
 }
 @media only screen and (orientation: portrait) and (min-width: 600px){
   /*Telefono con width minimo de 600 pixeles*/
-  body {
-    background-color: white;
-  }
   .divFlechas > div > .jugarFlechaIzquierda {
     margin-left: 35%;
   }
@@ -109,9 +94,6 @@ body {
 }
 @media only screen and (orientation: portrait) and (min-width: 800px){
   /*Telefono y Tablet con width minimo de 800 pixeles*/
-  body {
-    background-color: white;
-  }
   .divFlechas > div > .jugarFlechaIzquierda {
     margin-left: 35%;
   }
@@ -123,9 +105,6 @@ body {
 
 @media only screen and (orientation: landscape) and (min-height: 280px){
   /*Telefono girado con height minimo de 280 pixeles*/
-  body {
-    background-color: white;
-  }
   .divJuego {
     position: relative;
     width: 100%;
@@ -153,8 +132,8 @@ body {
     font-size: 12px;
   }
   .puntaje {
-    padding: 4px 14px;
-    font-size: 20px;
+    padding: 4px 12px;
+    font-size: 22px;
   }
   .divFlechas > div > .jugarFlechaIzquierda {
     margin-right: 3%;
@@ -175,9 +154,6 @@ body {
 
 @media only screen and (orientation: landscape) and (min-height: 360px){
   /*Telefono girado con height minimo de 360 pixeles*/
-  body {
-    background-color: white;
-  }
   .divJuego > canvas{
     width: 56%;
   }
@@ -192,9 +168,6 @@ body {
 
 @media only screen and (orientation: landscape) and (min-height: 600px){
   /*Tablet girado con height minimo de 600 pixeles*/
-  body {
-    background-color: white;
-  }
   .divJuego > canvas{
     width: 64%;
   }
@@ -209,9 +182,6 @@ body {
 
 @media only screen and (orientation: landscape) and (min-height: 800px){
   /*tablet girado con height minimo de 800 pixeles*/
-  body {
-    background-color: white;
-  }
   .divJuego > canvas{
     width: 68%;
   }
@@ -227,8 +197,6 @@ body {
 @media only screen and (max-resolution: 163dpi){
   /*Laptops o PCs con height minimo de 640 pixeles*/
   body {
-    background-image: "image01.jpg";
-    background-color: white;
     width: 99%;
     height: 96vh;
     /*outline: dashed 1px blue;*/
