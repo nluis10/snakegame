@@ -239,7 +239,7 @@ body {
     display: none;
   }
   .center {
-    outline: dashed 1px black;
+    /*outline: dashed 1px black;*/
     display: block;
   }
   .divJuego > table {
