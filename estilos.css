@@ -77,13 +77,13 @@ body {
   width: 99%;
 }
 
-@media only screen and (orientation: portrait) and (min-width: 300px) and (min-resolution: 166dpi){
+@media only screen and (orientation: portrait) and (min-width: 300px){
   /*Telefono con width minimo de 300 pixeles*/
   body {
     background-color: white;
   }
 }
-@media only screen and (orientation: portrait) and (min-width: 400px) and (min-resolution: 166dpi){
+@media only screen and (orientation: portrait) and (min-width: 400px){
   /*Telefono con width minimo de 400 pixeles*/
   body {
     background-color: white;
@@ -95,7 +95,7 @@ body {
     margin-right: 20%;
   }
 }
-@media only screen and (orientation: portrait) and (min-width: 600px) and (min-resolution: 166dpi){
+@media only screen and (orientation: portrait) and (min-width: 600px){
   /*Telefono con width minimo de 600 pixeles*/
   body {
     background-color: white;
@@ -107,7 +107,7 @@ body {
     margin-right: 35%;
   }
 }
-@media only screen and (orientation: portrait) and (min-width: 800px) and (min-resolution: 166dpi){
+@media only screen and (orientation: portrait) and (min-width: 800px){
   /*Telefono y Tablet con width minimo de 800 pixeles*/
   body {
     background-color: white;
@@ -121,7 +121,7 @@ body {
 }
 
 
-@media only screen and (orientation: landscape) and (min-height: 280px) and (min-resolution: 166dpi){
+@media only screen and (orientation: landscape) and (min-height: 280px){
   /*Telefono girado con height minimo de 280 pixeles*/
   body {
     background-color: white;
@@ -173,7 +173,7 @@ body {
   }
 }
 
-@media only screen and (orientation: landscape) and (min-height: 360px) and (min-resolution: 166dpi){
+@media only screen and (orientation: landscape) and (min-height: 360px){
   /*Telefono girado con height minimo de 360 pixeles*/
   body {
     background-color: white;
@@ -190,7 +190,7 @@ body {
 
 }
 
-@media only screen and (orientation: landscape) and (min-height: 600px) and (min-resolution: 166dpi){
+@media only screen and (orientation: landscape) and (min-height: 600px){
   /*Tablet girado con height minimo de 600 pixeles*/
   body {
     background-color: white;
@@ -207,7 +207,7 @@ body {
 
 }
 
-@media only screen and (orientation: landscape) and (min-height: 800px) and (min-resolution: 166dpi){
+@media only screen and (orientation: landscape) and (min-height: 800px){
   /*tablet girado con height minimo de 800 pixeles*/
   body {
     background-color: white;
@@ -224,7 +224,7 @@ body {
 
 }
 
-@media only screen and (min-width: 640px) and (max-resolution: 165dpi){
+@media only screen and (max-resolution: 163dpi){
   /*Laptops o PCs con height minimo de 640 pixeles*/
   body {
     background-color: white;
