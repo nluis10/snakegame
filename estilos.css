@@ -227,6 +227,7 @@ body {
 @media only screen and (max-resolution: 163dpi){
   /*Laptops o PCs con height minimo de 640 pixeles*/
   body {
+    background-image: "image01.jpg";
     background-color: white;
     width: 99%;
     height: 96vh;
@@ -251,5 +252,9 @@ body {
     border: 4px solid #000;
     width: 560px;
     position: static;
+  }
+  .puntaje {
+    padding: 0px 14px;
+    font-size: 26px;
   }
 }
