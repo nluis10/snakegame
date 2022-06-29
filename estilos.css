@@ -1,14 +1,6 @@
 body {
   background-color: gray;
 }
-/*.center {
-  width: 100%;
-  height: 96vh;
-  outline: dashed 1px black;*
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}*/
 .divJuego {
   display: block;
 }
@@ -33,7 +25,7 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.puntajeMobile {
+.puntaje {
   background-color: #4caf50;
   border: none;
   color: white;
@@ -85,13 +77,13 @@ body {
   width: 99%;
 }
 
-@media only screen and (orientation: portrait) and (min-width: 300px) {
+@media only screen and (orientation: portrait) and (min-width: 300px) and (min-resolution: 166dpi){
   /*Telefono con width minimo de 300 pixeles*/
   body {
     background-color: white;
   }
 }
-@media only screen and (orientation: portrait) and (min-width: 400px) {
+@media only screen and (orientation: portrait) and (min-width: 400px) and (min-resolution: 166dpi){
   /*Telefono con width minimo de 400 pixeles*/
   body {
     background-color: white;
@@ -103,7 +95,7 @@ body {
     margin-right: 20%;
   }
 }
-@media only screen and (orientation: portrait) and (min-width: 600px) {
+@media only screen and (orientation: portrait) and (min-width: 600px) and (min-resolution: 166dpi){
   /*Telefono con width minimo de 600 pixeles*/
   body {
     background-color: white;
@@ -115,7 +107,7 @@ body {
     margin-right: 35%;
   }
 }
-@media only screen and (orientation: portrait) and (min-width: 800px) {
+@media only screen and (orientation: portrait) and (min-width: 800px) and (min-resolution: 166dpi){
   /*Telefono y Tablet con width minimo de 800 pixeles*/
   body {
     background-color: white;
@@ -129,10 +121,10 @@ body {
 }
 
 
-@media only screen and (orientation: landscape) and (min-height: 280px){
-  /*Telefono girado con height minimo de 300 pixeles*/
+@media only screen and (orientation: landscape) and (min-height: 280px) and (min-resolution: 166dpi){
+  /*Telefono girado con height minimo de 280 pixeles*/
   body {
-    background-color: lightblue;
+    background-color: white;
   }
   .divJuego {
     position: relative;
@@ -141,7 +133,6 @@ body {
   .divJuego > canvas{
     position: absolute;
     width: 50%;
-    
   }
   .divJuego > table {
     right: 0%;
@@ -161,7 +152,7 @@ body {
   .divJuego table > tbody > tr > td > select {
     font-size: 12px;
   }
-  .puntajeMobile {
+  .puntaje {
     padding: 4px 14px;
     font-size: 20px;
   }
@@ -172,11 +163,93 @@ body {
     margin-left: 3%;
   }
   .divFlechas{
-    /*right: 1%;
-    top: 30%;*/
-    position: relative;
-  }/*
+    right: 10%;
+    top: 30%;
+    position: absolute;
+  }
   .divFlechasAbajo{
+    right: 19%;
     position: relative;
-  }*/
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-height: 360px) and (min-resolution: 166dpi){
+  /*Telefono girado con height minimo de 360 pixeles*/
+  body {
+    background-color: white;
+  }
+  .divJuego > canvas{
+    width: 56%;
+  }
+  .divJuego > table {
+    width: 42%;
+  }
+  .divFlechas{
+    right: 4%;
+  }
+
+}
+
+@media only screen and (orientation: landscape) and (min-height: 600px) and (min-resolution: 166dpi){
+  /*Tablet girado con height minimo de 600 pixeles*/
+  body {
+    background-color: white;
+  }
+  .divJuego > canvas{
+    width: 64%;
+  }
+  .divJuego > table {
+    width: 34%;
+  }
+  .divFlechas{
+    right: 7%;
+  }
+
+}
+
+@media only screen and (orientation: landscape) and (min-height: 800px) and (min-resolution: 166dpi){
+  /*tablet girado con height minimo de 800 pixeles*/
+  body {
+    background-color: white;
+  }
+  .divJuego > canvas{
+    width: 68%;
+  }
+  .divJuego > table {
+    width: 30%;
+  }
+  .divFlechas{
+    right: 6%;
+  }
+
+}
+
+@media only screen and (min-width: 640px) and (max-resolution: 165dpi){
+  /*Laptops o PCs con height minimo de 640 pixeles*/
+  body {
+    background-color: white;
+    width: 99%;
+    height: 96vh;
+    /*outline: dashed 1px blue;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .divFlechas{
+    display: none;
+  }
+  .center {
+    outline: dashed 1px black;
+    display: block;
+  }
+  .divJuego > table {
+    /*border: 4px solid #000;*/
+    position: static;
+    width: 568px;
+  }
+  .divJuego > canvas {
+    border: 4px solid #000;
+    width: 560px;
+    position: static;
+  }
 }

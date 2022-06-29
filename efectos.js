@@ -1,6 +1,6 @@
 const canvasWidth = 560;
 const canvasHeight = 420;
-const pantalla = document.getElementById("graficoMobile");
+const pantalla = document.getElementById("grafico");
 const botonPuntaje = document.getElementById("puntaje");
 const selectNivel = document.getElementById("nivel");
 const botonFlechaDerecha = document.getElementById("botonFlechaDerecha");
@@ -462,30 +462,34 @@ function limpiarMovimientoAbajo() {
 }
 
 function jugar() {
-  direccionDerecha = true;
-  puntaje = 0;
-  botonPuntaje.innerHTML = puntaje;
-  selectNivel.disabled = true;
-  clickBotonJugar = false;
-  //console.log("JUGAR");
-  switch (selectNivel.value) {
-    case "FACIL":
-      velocidad = 250;
-      break;
+  if (clickBotonJugar == true) {
+    //console.log("JUGAR");
+    clickBotonJugar = false;
+    direccionDerecha = true;
+    puntaje = 0;
+    botonPuntaje.innerHTML = puntaje;
+    selectNivel.disabled = true;
+    clickBotonJugar = false;
+    //console.log("JUGAR");
+    switch (selectNivel.value) {
+      case "FACIL":
+        velocidad = 250;
+        break;
 
-    case "NORMAL":
-      velocidad = 125;
-      break;
+      case "NORMAL":
+        velocidad = 125;
+        break;
 
-    case "DIFICIL":
-      velocidad = 62.5;
-      break;
+      case "DIFICIL":
+        velocidad = 62.5;
+        break;
+    }
+    //console.log(velocidad);
+    //console.log(direccionDerecha);
+    moverCuadroAleatorio();
+    moverSerpiente({ key: "ArrowRight" });
+    pantalla.focus();
   }
-  //console.log(velocidad);
-  //console.log(direccionDerecha);
-  moverCuadroAleatorio();
-  moverSerpiente({ key: "ArrowRight" });
-  pantalla.focus();
 }
 
 function mensajeInicarJuego() {
@@ -540,38 +544,27 @@ function mensajeJuegoFinalizado() {
   pincel.fillText("JUGAR", 208, 346);
 }
 
-function moverBotonFlechaDerecha(){
+function moverBotonFlechaDerecha() {
   moverSerpiente({ key: "ArrowRight" });
 }
 
-function moverBotonFlechaIzquierda(){
+function moverBotonFlechaIzquierda() {
   moverSerpiente({ key: "ArrowLeft" });
 }
 
-function moverBotonFlechaArriba(){
+function moverBotonFlechaArriba() {
   moverSerpiente({ key: "ArrowUp" });
 }
 
-function moverBotonFlechaAbajo(){
+function moverBotonFlechaAbajo() {
   moverSerpiente({ key: "ArrowDown" });
-}
-
-function verficarCoordenadas(e){
-  let x = e.pageX - pantalla.offsetLeft;
-  let y = e.pageY - pantalla.offsetTop;  
-  //console.log(x,y)
-  if(x >= 120 && x <= 520 && y >= 180 && y <= 540 && clickBotonJugar == true){
-    //console.log("JUGAR");
-    clickBotonJugar = false;
-    jugar();
-  }
 }
 
 culebraInicial();
 pintarSerpiente("ArrowRight");
 mensajeInicarJuego();
 pantalla.onkeydown = moverSerpiente;
-pantalla.onclick = verficarCoordenadas;
+pantalla.onclick = jugar;
 botonFlechaDerecha.ontouchstart = moverBotonFlechaDerecha;
 botonFlechaIzquierda.ontouchstart = moverBotonFlechaIzquierda;
 botonFlechaArriba.ontouchstart = moverBotonFlechaArriba;
